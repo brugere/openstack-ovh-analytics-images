@@ -1,0 +1,5 @@
+---
+service_password: admin
+use_dns: true
+# set to true to show host variables
+debug: false

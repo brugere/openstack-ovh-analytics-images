@@ -1,0 +1,57 @@
+service_password: admin
+use_dns: yes
+mysql_user_home: /root
+mysql_user_name: root
+mysql_user_password: root
+mysql_root_password_update: no
+mysql_enabled_on_startup: yes
+mysql_databases:
+  - name: hive
+    encoding: utf8
+    collation: utf8_general_ci
+  - name: oozie
+    encoding: utf8
+    collation: utf8_general_ci
+  - name: ambari
+    encoding: utf8
+    collation: utf8_general_ci
+  - name: ranger
+    encoding: utf8
+    collation: utf8_general_ci
+  - name: rangerkms
+    encoding: utf8
+    collation: utf8_general_ci
+  - name: "{{ guacamole_db_name }}"
+    encoding: utf8
+    collation: utf8_general_ci
+mysql_users:
+  - name: hive
+    host: "%"
+    bddname: hive
+    password: hivemdp
+    priv: "hive.*:ALL"
+  - name: oozie
+    bddname: oozie
+    host: "%"
+    password: ooziemdp
+    priv: "oozie.*:ALL"
+  - name: ambari
+    bddname: ambari
+    host: "%"
+    password: ambarimdp
+    priv: "ambari.*:ALL"
+  - name: ranger
+    bddname: ranger
+    host: "%"
+    password: rangermdp
+    priv: "ranger.*:ALL"
+  - name: rangerkms
+    bddname: rangerkms
+    host: "%"
+    password: rangerkmsmdp
+    priv: "rangerkms.*:ALL"
+  - name: "{{ guacamole_db_username }}"
+    bddname: "{{ guacamole_db_name }}"
+    host: "%"
+    password: "{{ guacamole_db_password }}"
+    priv: "{{ guacamole_db_name }}.*:ALL"

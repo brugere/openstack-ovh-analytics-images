@@ -1,0 +1,4 @@
+---
+guacamole_db_name: guacamole
+guacamole_db_username: guacamole
+guacamole_db_password: guacdbpassword

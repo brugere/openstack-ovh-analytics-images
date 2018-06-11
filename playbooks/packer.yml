@@ -1,0 +1,45 @@
+---
+- name: Apply the common role to the image
+  hosts: common
+  any_errors_fatal: true
+  become: yes
+  vars:
+    distro: hdp
+  roles:
+    - openstack-common
+
+- name: Apply the Ambari role to the image
+  hosts: hadoop-cluster
+  any_errors_fatal: yes
+  become: yes
+  pre_tasks:
+    - name: Include Analytics vars
+      include_vars: group_vars/analytics
+  roles:
+    - openstack-ambari
+
+- name: Apply the kerberos role to the image
+  hosts: kerberos-kdc
+  any_errors_fatal: yes
+  become: yes
+  roles:
+    - openstack-kerberos
+
+- name: Apply the MySQL role to the image
+  hosts: bdd
+  any_errors_fatal: yes
+  become: yes
+  pre_tasks:
+    - name: Include MySQL vars
+      include_vars: group_vars/mysql
+  roles:
+    - openstack-mysql
+
+- name: Apply Guacamole role to guacamole node
+  hosts: guacamole
+  become: yes
+  pre_tasks:
+    - name: include guacamole vars
+      include_vars: group_vars/guacamole
+  roles:
+    - openstack-guacamole

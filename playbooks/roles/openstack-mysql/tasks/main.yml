@@ -1,0 +1,23 @@
+---
+# Variable configuration.
+- include: variables.yml
+
+- name: Copy MariaDB repo
+  copy:
+    src: mariadb.repo
+    dest: /etc/yum.repos.d/mariadb.repo
+
+- name: Ensure MySQL packages are installed.
+  yum:
+    name: "{{ item }}"
+    state: "installed"
+  with_items: "{{ mysql_packages }}"
+  register: rh_mysql_install_packages
+
+- name: Open 3306 port
+  firewalld:
+    port: 3306/tcp
+    permanent: true
+    state: enabled
+  notify: Restart firewalld
+

@@ -1,0 +1,21 @@
+---
+hdp_version: '2.6'
+ambari_version: '2.6.2.0'
+wait: true
+wait_timeout: 3600   # 60 minutes
+
+tachyon_service: true
+
+data_disks_filesystem: xfs
+
+# set to true to show host variables
+debug: false
+
+#requires HDP2.3 RHEL/CentOS 6
+#available in 2 and 3 masternode blueprints
+arcadia: false
+arcadia_config:
+  archive_file: ARCADIA-ENTERPRISE-3.1.0.0_1464326436-1.tar.gz
+  archive_src: 'http://get.arcadiadata.com'
+  archive_dest: '/var/lib/ambari-server/resources/stacks/HDP/2.4/services/'
+  hdfs-site: 'dfs.datanode.hdfs-blocks-metadata.enabled'

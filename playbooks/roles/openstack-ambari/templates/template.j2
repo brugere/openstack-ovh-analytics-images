@@ -1,0 +1,15 @@
+{
+  "blueprint": "prewarm",
+  "default_password": "admin",
+  "host_groups": [
+    {
+      "name": "prewarm",
+      "hosts": [
+        {
+          "fqdn": "{{ ansible_nodename }}"
+        }
+      ]
+    }
+  ],
+  "provision_action": "INSTALL_ONLY",
+}

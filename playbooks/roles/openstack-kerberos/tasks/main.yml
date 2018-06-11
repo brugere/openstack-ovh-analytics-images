@@ -1,0 +1,20 @@
+---
+- name: Install krb5-server
+  yum:
+    name: "krb5-server"
+    update_cache: yes
+    state: installed
+
+- name: Install rng-tools
+  yum:
+    name: "rng-tools"
+    update_cache: yes
+    state: installed
+
+- name: Add more entropy for the random generation for the encryption key of the Kerberos database
+  lineinfile:
+    path: /etc/sysconfig/rngd
+    line: "EXTRAOPTIONS=\"-r /dev/urandom\""
+    state: present
+    create: yes
+

@@ -1,0 +1,50 @@
+---
+# defaults file for guacamole-ansible-role
+
+guacamole_version: 0.9.14
+guacamole_db_name: guac_db
+guacamole_db_username: guac_db_usr
+guacamole_db_password: guacdbpassword
+
+guacamole_auth_jdbc_url: "https://archive.apache.org/dist/guacamole/{{ guacamole_version }}/binary/guacamole-auth-jdbc-{{ guacamole_version }}.tar.gz"
+guacamole_mysql_connector_java_url: "https://cdn.mysql.com/Downloads/Connector-J/mysql-connector-java-5.1.45.tar.gz"
+
+guacamole_packages_EL:
+  - "mysql"
+  - "cairo-devel"
+  - "freerdp-devel"
+  - "java-1.8.0-openjdk"
+  - "libguac"
+  - "libguac-client-rdp"
+  - "libguac-client-ssh"
+  - "libguac-client-vnc"
+  - "libjpeg-turbo-devel"
+  - "libpng-devel"
+  - "libssh2-devel"
+  - "libtelnet-devel"
+  - "libvncserver-devel"
+  - "libwebp-devel"
+  - "libvorbis-devel"
+  - "maven"
+  - "openssl-devel"
+  - "pango-devel"
+  - "pulseaudio-libs-devel"
+  - "terminus-fonts"
+  - "tomcat"
+  - "tomcat-admin-webapps"
+  - "tomcat-webapps"
+  - "uuid-devel"
+  - "freerdp"
+  - "ffmpeg-devel"
+  - "MySQL-python"
+  - "autoconf"
+  - "automake"
+  - "gcc"
+  - "git"
+  - "libtool"
+  - "python-pip"
+
+guacamole_temp_path: /tmp/guactempdir
+
+epel_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
+epel_key: "/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7"
